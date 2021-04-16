@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.mingyang</groupId>
+    <artifactId>runyushop</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <!--项目打包类型-->
+    <packaging>pom</packaging>
+
+    <!--模块管理，实现pom项目之间的聚合关系-->
+    <modules>
+        <module>runyushop-common</module>
+        <module>runyushop-mbg</module>
+        <module>runyushop-admin</module>
+        <module>runyushop-security</module>
+    </modules>
+
+    <!--继承spring-boot-starter-parent 依赖-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.4</version>
+        <relativePath/>
+    </parent>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <mysql.version>8.0.20</mysql.version>
+        <mybatis-plus.version>3.4.2</mybatis-plus.version>
+        <swagger2.version>2.9.2</swagger2.version>
+        <swagger-bootstrap-ui.version>1.9.6</swagger-bootstrap-ui.version>
+        <druid.version>1.1.21</druid.version>
+        <jjwt.version>0.9.1</jjwt.version>
+        <runyushop-common.version>1.0-SNAPSHOT</runyushop-common.version>
+        <runyushop-security.version>1.0-SNAPSHOT</runyushop-security.version>
+    </properties>
+
+    <dependencies>
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--runyushop 公共模块-->
+            <dependency>
+                <groupId>com.mingyang</groupId>
+                <artifactId>runyushop-common</artifactId>
+                <version>${runyushop-common.version}</version>
+            </dependency>
+            <!--runyushop 安全模块-->
+            <dependency>
+                <groupId>com.mingyang</groupId>
+                <artifactId>runyushop-security</artifactId>
+                <version>${runyushop-security.version}</version>
+            </dependency>
+            <!--MySQL数据库驱动-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <!--MyBatis-Plus-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <!--Swagger-UI API文档生产工具-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger2.version}</version>
+            </dependency>
+            <!--swaggerUI依赖-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger2.version}</version>
+            </dependency>
+            <!--swagger第三方UI依赖-->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>swagger-bootstrap-ui</artifactId>
+                <version>${swagger-bootstrap-ui.version}</version>
+            </dependency>
+            <!-- druid -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <!-- JWt -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+</project>
